@@ -39,8 +39,20 @@ def analyze_video():
 
 def process_video(filepath): 
 
-    cap = cv2
+    cap = cv2.VideoCapture(filepath)
+    frames = []
+    while cap.isOpend():
+        ret, frame = cap.read()
+        if not ret: break
+        frames.append(frame)
+    cap.release()
 
-    return "hola"
+    suspicious_frames= [
+        (i, os.path.join('uploads', f'frame_${i}.jpg'))
+        for i in range(0, len(frames), len(frames) // 5)
+    ]
+    return suspicious_frames[:5]
+
 if __name__ == '__main__':
+    os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
     app.run()
