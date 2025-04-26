@@ -1,4 +1,8 @@
+import os
+import cv2
+import numpy as np
 from flask import Flask, request, render_template, request, redirect, url_for, flash
+from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
 app.secret_key = 'Eduardo_Morales'
@@ -6,6 +10,10 @@ app.config['UPLOAD_FOLDER'] = 'static/uploads'
 app.config['MAX_CONTENT_LENGTH'] = 1024 * 1024 * 50 
 
 ALLOWED_EXTENSIONS = { 'mp4', 'avi', 'mov' }
+
+def allowed_file(filename):
+    return '.' in filename and \
+        filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 @app.route('/')
 def home():
@@ -22,7 +30,16 @@ def analyze_video():
         flash('No selected file')
         return redirect(url_for('home'))
     
-    if file and allowed_file(file.filename)
+    if file and allowed_file(file.filename):
+        filename = secure_filename(file.filename)
+        filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+        file.save(filepath)
+
+        confidence, suspicious_frames = process_video(filepath)
+
+def process_video(filepath): 
+
+    cap = cv2
 
     return "hola"
 if __name__ == '__main__':
