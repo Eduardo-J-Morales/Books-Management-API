@@ -3,6 +3,7 @@ import cv2
 import numpy as np
 from flask import Flask, request, render_template, request, redirect, url_for, flash
 from werkzeug.utils import secure_filename
+from models.deepfake_model import predict_deepfake
 
 app = Flask(__name__)
 app.secret_key = 'Eduardo_Morales'
@@ -37,21 +38,29 @@ def analyze_video():
 
         confidence, suspicious_frames = process_video(filepath)
 
+        return render_template('result.html',
+                               filename=filename,
+                               confidence=confidence,
+                               frames=suspicious_frames
+                               )
+
 def process_video(filepath): 
 
     cap = cv2.VideoCapture(filepath)
     frames = []
-    while cap.isOpend():
+    while cap.isOpened():
         ret, frame = cap.read()
         if not ret: break
         frames.append(frame)
     cap.release()
 
+    confidence = predict_deepfake(frames)
+
     suspicious_frames= [
         (i, os.path.join('uploads', f'frame_${i}.jpg'))
         for i in range(0, len(frames), len(frames) // 5)
     ]
-    return suspicious_frames[:5]
+    return confidence, suspicious_frames[:5]
 
 if __name__ == '__main__':
     os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
