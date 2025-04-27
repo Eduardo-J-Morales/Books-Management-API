@@ -21,6 +21,15 @@ A web-based platform designed to detect deepfake videos using deep learning. Thi
 
 ## 🚀 Installation
 ```bash
+# Clone repository
 git clone https://github.com/yourusername/deepfake-detection-portal.git
 cd Deepfake-Detection-Portal
+
+# Create and activate virtual environment
+python -m venv venv
+source venv/bin/activate  # Linux/Mac
+venv\Scripts\activate  # Windows
+
+#Install dependencies
+python install -r requirements.txt
 ```
