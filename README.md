@@ -31,5 +31,5 @@ source venv/bin/activate  # Linux/Mac
 venv\Scripts\activate  # Windows
 
 #Install dependencies
-python install -r requirements.txt
+pip install -r requirements.txt
 ```
