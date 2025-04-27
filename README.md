@@ -9,7 +9,7 @@ A web-based platform designed to detect deepfake videos using deep learning. Thi
 ![Python](https://img.shields.io/badge/Python-3.8%2B-blue.svg?logo=python)
 ![License](https://img.shields.io/badge/License-MIT-green.svg)
 
-🌐 **Live Demo**
+🌐 #Live Demo
 
 ## 🧬 Core Features
 - **Video Upload Support**: Accepts MP4, AVI, and MOV files up to 50MB.
