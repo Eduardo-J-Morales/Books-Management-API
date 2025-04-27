@@ -20,6 +20,7 @@ A web-based platform designed to detect deepfake videos using deep learning. Thi
 - **Confidence Metric**: Aggregates scores from suspicious frames into a percentage-based risk assessment.
 
 ## 🚀 Installation
-
+```bash
 git clone https://github.com/yourusername/deepfake-detection-portal.git
 cd Deepfake-Detection-Portal
+```
