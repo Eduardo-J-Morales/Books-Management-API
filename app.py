@@ -82,4 +82,4 @@ def process_video(filepath):
 
 if __name__ == '__main__':
     os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
-    app.run()
+    app.run(host='0.0.0.0')
