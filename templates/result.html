@@ -18,7 +18,7 @@
                 {% for frame in frames %}
                 <div class="col-md-4 mb-3">
                     <div class="card frame-card">
-                        <img src="{{ url_for('static', filename=frame[1]) }}" class="card-img-top">
+                        <img src="{{ url_for('static', filename='uploads/' + frame[1]) }}" class="card-img-top">
                         <div class="card-footer">
                             Frame #{{ frame[0] }}
                         </div>

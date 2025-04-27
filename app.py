@@ -44,23 +44,36 @@ def analyze_video():
                                frames=suspicious_frames
                                )
 
-def process_video(filepath): 
-
+def process_video(filepath):
     cap = cv2.VideoCapture(filepath)
     frames = []
-    while cap.isOpened():
+    frame_numbers = []
+    count = 0
+
+    while cap.isOpened(): 
         ret, frame = cap.read()
         if not ret: break
-        frames.append(frame)
+        if count % 30 == 0:
+            frames.append(frame)
+            frame_numbers.append(count)
+        
+        count += 1
     cap.release()
 
     confidence = predict_deepfake(frames)
 
-    suspicious_frames= [
-        (i, os.path.join('uploads', f'frame_${i}.jpg'))
-        for i in range(0, len(frames), len(frames) // 5)
-    ]
-    return confidence, suspicious_frames[:5]
+    suspicious_frames = [] 
+    output_dir = os.path.join(app.config['UPLOAD_FOLDER'], 'frames')
+    os.makedirs(output_dir, exist_ok=True)
+
+    for i, frame in enumerate(frames[:5]):
+        frame_path = os.path.join('frames', f'frame_{frame_numbers[i]}.jpg')
+        full_path = os.path.join(app.config['UPLOAD_FOLDER'], frame_path)
+        cv2.imwrite(full_path, cv2.cvtColor(frame, cv2.COLOR_BGR2RGB))
+        suspicious_frames.append((frame_numbers[i], frame_path))
+        
+    return confidence, suspicious_frames
+
 
 if __name__ == '__main__':
     os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
