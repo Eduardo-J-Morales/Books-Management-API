@@ -1,12 +1,32 @@
 import torch
 import cv2
 import numpy as np
+from torch import nn
 from torchvision import transforms
-from torchvision.models import resnet50,  ResNet50_Weights
+from torchvision.models import resnet50, ResNet50_Weights
 
-weights = ResNet50_Weights.DEFAULT
-model = resnet50(weights=weights)
+class DeepfakeDetector(nn.Module):
+    def __init__(self):
+        super().__init__()
+        self.backbone = resnet50(weights=ResNet50_Weights.DEFAULT)
+        self.classifier = nn.Sequential(
+            nn.Linear(1000, 512),
+            nn.ReLU(),
+            nn.Dropout(0.5),
+            nn.Linear(512, 1),
+            nn.Sigmoid()
+        )
+        
+        for param in self.backbone.parameters():
+            param.requires_grad = False
+            
+    def forward(self, x):
+        features = self.backbone(x)
+        return self.classifier(features)
+
+model = DeepfakeDetector()
 model.eval()
+
 preprocess = transforms.Compose([
     transforms.ToTensor(),
     transforms.Resize((224, 224)),
@@ -14,15 +34,14 @@ preprocess = transforms.Compose([
 ])
 
 def predict_deepfake(frames):
-    features = []
+    frame_scores = []
     for frame in frames:
         frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-
-        input_tensor = preprocess(frame_rgb)
-        input_batch = input_tensor.unsqueeze(0)
-
+        input_tensor = preprocess(frame_rgb).unsqueeze(0)
+        
         with torch.no_grad():
-            features.append(model(input_batch).squeeze().numpy())
-
-    confidence = np.mean([f.mean() for f in features])
-    return float(np.clip(confidence, 0.3, 0.7))
+            score = model(input_tensor).item()
+        
+        frame_scores.append(score)
+    
+    return frame_scores

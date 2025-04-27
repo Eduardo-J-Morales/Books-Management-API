@@ -43,35 +43,40 @@ def analyze_video():
                                confidence=confidence,
                                frames=suspicious_frames
                                )
-
+    
 def process_video(filepath):
     cap = cv2.VideoCapture(filepath)
     frames = []
     frame_numbers = []
     count = 0
-
-    while cap.isOpened(): 
+    
+    while cap.isOpened():
         ret, frame = cap.read()
         if not ret: break
         if count % 30 == 0:
             frames.append(frame)
             frame_numbers.append(count)
-        
         count += 1
     cap.release()
 
-    confidence = predict_deepfake(frames)
+    frame_scores = predict_deepfake(frames)
+    
+    scored_frames = list(zip(frame_numbers, frames, frame_scores))
+    scored_frames.sort(key=lambda x: x[2], reverse=True)  
+    top_suspicious = scored_frames[:5]
 
-    suspicious_frames = [] 
+    suspicious_frames = []
     output_dir = os.path.join(app.config['UPLOAD_FOLDER'], 'frames')
     os.makedirs(output_dir, exist_ok=True)
-
-    for i, frame in enumerate(frames[:5]):
-        frame_path = os.path.join('frames', f'frame_{frame_numbers[i]}.jpg')
+    
+    for idx, frame, score in top_suspicious:
+        frame_path = os.path.join('frames', f'frame_{idx}.jpg')
         full_path = os.path.join(app.config['UPLOAD_FOLDER'], frame_path)
         cv2.imwrite(full_path, cv2.cvtColor(frame, cv2.COLOR_BGR2RGB))
-        suspicious_frames.append((frame_numbers[i], frame_path))
-        
+        suspicious_frames.append((idx, frame_path))
+    
+    confidence = np.mean([score for _, _, score in top_suspicious])
+    
     return confidence, suspicious_frames
 
 
