@@ -24,7 +24,7 @@ git clone https://github.com/Eduardo-J-Morales/deepfake-detection-portal.git
 cd deepfake-detection-portal
 
 # Create and activate virtual environment
-python -m venv venv
+python3 -m venv venv
 source venv/bin/activate  # Linux/Mac
 venv\Scripts\activate  # Windows
 
