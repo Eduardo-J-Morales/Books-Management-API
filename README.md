@@ -32,5 +32,5 @@ venv\Scripts\activate  # Windows
 pip install -r requirements.txt
 
 # Start development server
-python app.py
+python3 app.py
 ```
