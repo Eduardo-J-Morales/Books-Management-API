@@ -1,7 +1,7 @@
 flask
 torch
 torchvision
-opencv-python-headless
+opencv-python
 numpy
 werkzeug
 pillow  
