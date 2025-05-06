@@ -28,7 +28,9 @@ pip install virtualenv
 
 # Create and activate the virtual environment
 virtualenv env
-source venv/bin/activate | venv\Scripts\activate 
+source venv/bin/activate
+#Or
+venv\Scripts\activate 
 
 #Install dependencies
 pip install -r requirements.txt
