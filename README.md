@@ -25,8 +25,11 @@ cd deepfake-detection-portal
 
 # Create and activate virtual environment
 python3 -m venv venv
-source venv/bin/activate  # Linux/Mac
-venv\Scripts\activate  # Windows
+
+#Instal this dependency that is necessary to create the virtual env
+apt install python3.11-venv | dnf install python3.11-venv | snap install python3.11-venv | falpak install python3.11-venv
+
+source venv/bin/activate | venv\Scripts\activate 
 
 #Install dependencies
 pip install -r requirements.txt
