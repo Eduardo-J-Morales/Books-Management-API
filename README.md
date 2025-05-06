@@ -23,16 +23,16 @@ A web-based platform designed to detect deepfake videos using deep learning. Thi
 git clone https://github.com/Eduardo-J-Morales/deepfake-detection-portal.git
 cd deepfake-detection-portal
 
-#Instal this dependency that is necessary to create the virtual environment
+# Install this dependency that is necessary to create the virtual environment
 pip install virtualenv
 
 # Create and activate the virtual environment
 virtualenv env
 source venv/bin/activate
-#Or
+# Or
 venv\Scripts\activate 
 
-#Install dependencies
+# Install dependencies
 pip install -r requirements.txt
 
 # Start development server
