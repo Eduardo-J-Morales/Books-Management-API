@@ -24,10 +24,10 @@ git clone https://github.com/Eduardo-J-Morales/deepfake-detection-portal.git
 cd deepfake-detection-portal
 
 #Instal this dependency that is necessary to create the virtual environment
-apt install python3.11-venv | dnf install python3.11-venv | snap install python3.11-venv | falpak install python3.11-venv
+pip install virtualenv
 
 # Create and activate the virtual environment
-python3 -m venv venv
+virtualenv env
 source venv/bin/activate | venv\Scripts\activate 
 
 #Install dependencies
