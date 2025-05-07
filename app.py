@@ -53,3 +53,21 @@ class BookResource(Resource):
         validate_book_data(data)
         if Book.query.filter_by(isbn=data['isbn']).first():
             abort(400, 'Book with this ISBN already exists')
+        new_book = Book(**data)
+        db.session.add(new_book)
+        db.session.commit()
+        return new_book.to_dict(), 201
+    
+    @auth.login_required
+    def put(self, book_id):
+        data = request.get_json()
+        validate_book_data(data)
+        if data['isbn'] != Book.query.get_or_404(book_id).isbn and Book.query.filter_by(isbn=data['isbn']).first():
+            abort(400, 'Book with this ISBN already exists')
+        book = Book.query.get_or_404(book_id)
+        book.title = data['title']
+        book.author = data['author']
+        book.published_date = data['published_date']
+        book.isbn = data['isbn']
+        db.session.commit()
+        return book.to_dict()
