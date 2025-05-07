@@ -88,8 +88,8 @@ A RESTful API for managing books, built with Flask, Flask-RESTful, SQLAlchemy, a
 
 1. ### Clone the repo:
     ```sh
-    git clone https://github.com/yourusername/book-management-system.git
-    cd book-management-system
+    git clone https://github.com/Eduardo-J-Morales/Book-Management-System.git
+    cd Book-Management-System
     ```
 2. ### Install dependencies:
     ```sh
