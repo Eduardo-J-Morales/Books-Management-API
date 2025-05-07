@@ -1,3 +1,16 @@
-POST http://localhost:5000/books
+POST http://127.0.0.1:5000/books
+Authorization: Basic admin:password123
 Content-Type: application/json
 
+{
+    "title": "The Great Gatsby",
+    "author": "F. Scott Fitzgerald",
+    "published_year": 1925,
+    "isbn": "9780743273565"
+}
+
+######
+
+
+GET http://127.0.0.1:5000/books/2
+Authorization: Basic admin:password123
