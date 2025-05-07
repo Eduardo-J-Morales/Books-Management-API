@@ -36,7 +36,7 @@ A RESTful API for managing books, built with Flask, Flask-RESTful, SQLAlchemy, a
 |--------|----------------------|----------------------|
 | GET    | `/books`             | List all books       |
 | POST   | `/books`             | Add a new book       |
-| GET    | `/books/<book_id>`   | Get book details     |
+| GET    | `/books/<book_id>`   | Get a specific book  |
 | PUT    | `/books/<book_id>`   | Update a book        |
 | DELETE | `/books/<book_id>`   | Delete a book        |
 
