@@ -32,15 +32,41 @@ A RESTful API for managing books, built with Flask, Flask-RESTful, SQLAlchemy, a
 
 ### API Endpoints
 
-| Method | Endpoint        | Description
-|-------------------------------
-| GET       |                 |
-| POST       |                 |
-| GET      |                 |
-| PUT       |                 |
-| DELETE       |                 |
+| Method | Endpoint          | Description          |
+|---------------------------------------------------|
+| GET    | `/books`          | List all books       |
+| POST   | `books`           | Add a new book       |
+| GET    | `books/<book_id>` | Get an specific book |
+| PUT    | `books/<book_id>` | Update a book        |
+| DELETE | `books/<book_id>` | Delete a book        |
 
 ### Example Request
+
+1. ## GET (List all books)
+```sh
+curl -u admin:password123 http://localhost:5000
+```
+
+2. ## POST (Add a new book)
+```sh
+curl -u admin:password123 -X POST http://localhost:500 \
+-H "Content-Type: application/json" \
+-d '{
+    "title": "The Pragmatic Programmer",
+    "author": "Andrew Hunt",
+    "published_year": 1999,
+    "isbn": "9780201616224"
+  }'
+```
+
+3. ## GET (Get an specific book)
+```sh
+curl -u admin:password123 http://localhost:5000
+```
+
+```sh
+curl -u admin:password123 http://localhost:5000
+```
 
 ```sh
 curl -u admin:password123 http://localhost:5000
