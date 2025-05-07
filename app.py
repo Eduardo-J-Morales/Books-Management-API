@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, abort
+from flask import Flask, request, render_template, abort
 from flask_sqlalchemy import SQLAlchemy
 from flask_restful import Resource, Api
 from flask_httpauth import HTTPBasicAuth
@@ -12,6 +12,12 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 api = Api(app)
 auth = HTTPBasicAuth()
+
+
+@app.route('/')
+def index():
+    return render_template('index.html')
+
 
 # In-memory user store for demonstration
 users = {
