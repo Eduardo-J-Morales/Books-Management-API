@@ -25,7 +25,7 @@ A RESTful API for managing books, built with Flask, Flask-RESTful, SQLAlchemy, a
 
 ## Getting Started
 
- ❗ **Important:**  All endpoints require HTTP Basic Auth:
+### ❗ **Important:**  All endpoints require HTTP Basic Auth:
 
 - **Username**: `admin`
 - **Password**: `password123`
