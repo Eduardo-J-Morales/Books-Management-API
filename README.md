@@ -61,7 +61,7 @@ A RESTful API for managing books, built with Flask, Flask-RESTful, SQLAlchemy, a
       }'
     ```
 
-3. ### GET (Get an specific book)
+3. ### GET (Get a specific book)
     ```sh
     curl -u admin:password123 http://localhost:5000/books/<book_id>
     ```
@@ -90,10 +90,12 @@ A RESTful API for managing books, built with Flask, Flask-RESTful, SQLAlchemy, a
     git clone https://github.com/Eduardo-J-Morales/Book-Management-System.git
     cd Book-Management-System
     ```
+    
 2. ### Install dependencies:
     ```sh
     pip install -r requirements.txt
     ```
+    
 3. ### Run the app:
     ```sh
     python app.py
