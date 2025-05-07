@@ -61,13 +61,20 @@ curl -u admin:password123 -X POST http://localhost:500 \
 
 3. ## GET (Get an specific book)
 ```sh
-curl -u admin:password123 http://localhost:5000
+curl -u admin:password123 http://localhost:5000/books/<book_id>
 ```
 
 ```sh
-curl -u admin:password123 http://localhost:5000
+curl -u admin:password123 -X PUT http://localhost:5000/books/<book_id> \
+  -H "Content-Type: application/json" \
+  -d '{
+    "title": "The Pragmatic Programmer (Updated)",
+    "author": "Andrew Hunt",
+    "published_year": 1999,
+    "isbn": "9780201616224"
+  }'
 ```
 
 ```sh
-curl -u admin:password123 http://localhost:5000
+curl -u admin:password123 -X DELETE http://localhost:5000/books/<book_id>
 ```
