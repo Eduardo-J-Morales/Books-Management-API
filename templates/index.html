@@ -2,26 +2,102 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="https://avatars.githubusercontent.com/u/169423185?v=4" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title> ERP Fusion Dashboard </title>
-  <style>
-    footer {
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="https://avatars.githubusercontent.com/u/169423185?v=4" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book Management API</title>
+    <style>
+        footer {
 
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      background-color: #333;
-      color: #fff;
-      text-align: center;
-      padding: 1rem;
-      font-size: 0.9rem;
-      margin-top: auto;
-      width: 100%;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+            font-size: 0.9rem;
+            margin-top: auto;
+            width: 100%;
 
-    }
-  </style>
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #f6f8fa;
+            margin: 0;
+            padding: 0 0 80px 0;
+            color: #222;
+            margin: 1.5rem;
+        }
+        header {
+            background: linear-gradient(90deg, #0077ff 0%, #00c6ff 100%);
+            color: #fff;
+            padding: 2rem 1rem 1rem 1rem;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+        h1 {
+            margin: 0 0 0.5rem 0;
+            font-size: 2.5rem;
+            letter-spacing: 1px;
+        }
+        h2, h3 {
+            color: #0077ff;
+            margin-top: 2rem;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0;
+        }
+        ul li {
+            background: #e3f0ff;
+            margin: 0.3rem 0;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 1.1rem;
+        }
+        .auth {
+            background: #fffbe7;
+            border-left: 4px solid #ffd600;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            border-radius: 6px;
+        }
+        .endpoint-card {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            margin: 1.5rem 0;
+            padding: 1rem 1.5rem;
+        }
+        pre {
+            background: #23272e;
+            color: #e3e3e3;
+            padding: 1rem;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-size: 1rem;
+        }
+        code {
+            background: #e3f0ff;
+            color: #0077ff;
+            padding: 0.2em 0.4em;
+            border-radius: 4px;
+            font-size: 1em;
+        }
+
+        @media (max-width: 600px) {
+            .endpoint-card {
+                padding: 1rem 0.5rem;
+            }
+            header {
+                padding: 1.5rem 0.5rem 0.5rem 0.5rem;
+            }
+        }
+
+    </style>
 </head>
 
 <body>
@@ -35,19 +111,38 @@
     </ul>
 
     <h2>Authentication</h2>
-    <p>All endpoints require HTTP Basic Auth</p>
+    <h3>All endpoints require HTTP Basic Auth</h3>
     <ul>
         <li>Username: <code>admin</code></li>
         <li>Password: <code>password</code></li>
     </ul>
-    <h2>Example <code>curl</code> Request</h2>
+    <br><h2>Examples of <code>curl</code> Requests</h2><br>
     <pre>
-        curl -X GET http://localhost:5000/books -u admin:password
+        curl -X GET https://books-management-api-6389.onrender.com/books -u admin:password
     </pre>
-  <footer>
-    <p>&copy; 2025 Developed by Eduardo Morales</p>
-  </footer>
-  <script type="module" src="/src/main.ts"></script>
+    <footer>
+        <p>&copy; 2025 Developed by Eduardo Morales</p>
+    </footer>
+    <h3>GET /books (List all books)</h3>
+    <pre>
+        curl -X GET https://books-management-api-6389.onrender.com/books -u admin:password
+    </pre>
+    <h3>POST /books (Add a new book)</h3>
+    <pre>
+        curl -X POST https://books-management-api-6389.onrender.com/books -u admin:password -H "Content-Type: application/json" -d '{"title": "New Book", "author": "John Doe", "published_date": 2025, "isbn": "1234567890123"}'
+    </pre>
+    <h3>GET /books/&lt;book_id&gt; (Get a book by ID)</h3>
+    <pre>
+        curl -X GET https://books-management-api-6389.onrender.com/books/1 -u admin:password
+    </pre>
+    <h3>PUT /books/&lt;book_id&gt; (Update a book by ID)</h3>
+    <pre>
+        curl -X PUT https://books-management-api-6389.onrender.com/books/1 -u admin:password -H "Content-Type: application/json" -d '{"title": "Updated Book", "author": "Jane Doe", "published_date": 2025, "isbn": "1234567890123"}'
+    </pre>
+    <h3>DELETE /books/&lt;book_id&gt; (Delete a book by ID)</h3>
+    <pre>
+        curl -X DELETE https://books-management-api-6389.onrender.com/books/1 -u admin:password
+    </pre>
 </body>
 
 </html>
