@@ -21,10 +21,6 @@ A RESTful API for managing books, built with Flask, Flask-RESTful, SQLAlchemy, a
 
 ## Getting Started
 
-### Prerequisites
-
-- [Docker](https://www.docker.com/get-started) installed
-
  ❗ **Important:**  All endpoints require HTTP Basic Auth:
 
 - **Username**: `admin`
@@ -78,3 +74,19 @@ curl -u admin:password123 -X PUT http://localhost:5000/books/<book_id> \
 ```sh
 curl -u admin:password123 -X DELETE http://localhost:5000/books/<book_id>
 ```
+
+## Installation
+
+1. ## Clone the repo:
+    ```sh
+    git clone https://github.com/yourusername/book-management-system.git
+    cd book-management-system
+    ```
+2. ## Install dependencies:
+    ```sh
+    pip install -r requirements.txt
+    ```
+3. ## Run the app:
+    ```sh
+    python app.py
+    ```
