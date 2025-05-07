@@ -44,12 +44,12 @@ A RESTful API for managing books, built with Flask, Flask-RESTful, SQLAlchemy, a
 
 ### Examples
 
-1. ### GET (List all books)
+1. #### GET (List all books)
     ```sh
     curl -u admin:password123 http://localhost:5000
     ```
 
-2. ### POST (Add a new book)
+2. #### POST (Add a new book)
     ```sh
     curl -u admin:password123 -X POST http://localhost:500 \
     -H "Content-Type: application/json" \
@@ -61,12 +61,12 @@ A RESTful API for managing books, built with Flask, Flask-RESTful, SQLAlchemy, a
       }'
     ```
 
-3. ### GET (Get a specific book)
+3. #### GET (Get a specific book)
     ```sh
     curl -u admin:password123 http://localhost:5000/books/<book_id>
     ```
 
-4. ### PUT (Update a book)
+4. #### PUT (Update a book)
     ```sh
     curl -u admin:password123 -X PUT http://localhost:5000/books/<book_id> \
       -H "Content-Type: application/json" \
@@ -78,7 +78,7 @@ A RESTful API for managing books, built with Flask, Flask-RESTful, SQLAlchemy, a
       }'
     ```
 
-5. ### DELETE (Delete a book)
+5. #### DELETE (Delete a book)
    ```sh
    curl -u admin:password123 -X DELETE http://localhost:5000/books/<book_id>
    ```
