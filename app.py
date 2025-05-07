@@ -1,4 +1,4 @@
-from flask import Flask, requiest, jsonify, abort
+from flask import Flask, request, jsonify, abort
 from flask_sqlalchemy import SQLAlchemy
 from flask_restful import Api, Resource, reqparse
 from flask_httpauth import HTTPBasicAuth
@@ -36,4 +36,20 @@ class Book(db.Model):
         }
     
 def validate_book_data(data):
-    if 
+    if not all(key in data for key in ('title', 'author', 'published_date', 'isbn')):
+        abort(400, 'Missing required fields')
+    if not isinstance(data['published_date'], int):
+        abort(400, 'Published date must be an integer')
+    
+class BookResource(Resource):
+    @auth.login_required
+    def get(self, book_id):
+        book = Book.query.get_or_404(book_id)
+        return jsonify(book.to_dict())
+    
+    @auth.login_required
+    def post(self):
+        data = request.get_json()
+        validate_book_data(data)
+        if Book.query.filter_by(isbn=data['isbn']).first():
+            abort(400, 'Book with this ISBN already exists')
