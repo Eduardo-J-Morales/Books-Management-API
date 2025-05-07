@@ -38,12 +38,12 @@ A RESTful API for managing books, built with Flask, Flask-RESTful, SQLAlchemy, a
 
 ### Example Request
 
-1. ## GET (List all books)
+1. ### GET (List all books)
 ```sh
 curl -u admin:password123 http://localhost:5000
 ```
 
-2. ## POST (Add a new book)
+2. ### POST (Add a new book)
 ```sh
 curl -u admin:password123 -X POST http://localhost:500 \
 -H "Content-Type: application/json" \
@@ -55,7 +55,7 @@ curl -u admin:password123 -X POST http://localhost:500 \
   }'
 ```
 
-3. ## GET (Get an specific book)
+3. ### GET (Get an specific book)
 ```sh
 curl -u admin:password123 http://localhost:5000/books/<book_id>
 ```
@@ -77,16 +77,16 @@ curl -u admin:password123 -X DELETE http://localhost:5000/books/<book_id>
 
 ## Installation
 
-1. ## Clone the repo:
+1. ### Clone the repo:
     ```sh
     git clone https://github.com/yourusername/book-management-system.git
     cd book-management-system
     ```
-2. ## Install dependencies:
+2. ### Install dependencies:
     ```sh
     pip install -r requirements.txt
     ```
-3. ## Run the app:
+3. ### Run the app:
     ```sh
     python app.py
     ```
