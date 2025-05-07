@@ -2,7 +2,7 @@
 
 A RESTful API for managing books, built with Flask, Flask-RESTful, SQLAlchemy, and secured with HTTP Basic Authentication.
 
-> ⚡ **Note:** There is an explanation to install this API below for developer but you don't need to install anything to try this API!  
+> ⚡ **Note:** There is an explanation to install this API below for developer, however you don't need to install anything to try this API!  
 > An online demo is available here: [Live API Deployment](https://your-api-url.com)  
 > (See below for usage instructions and example requests.)
 
