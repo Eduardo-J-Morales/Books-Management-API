@@ -32,13 +32,13 @@ A RESTful API for managing books, built with Flask, Flask-RESTful, SQLAlchemy, a
 
 ### API Endpoints
 
-| Method | Endpoint          | Description          |
-|---------------------------------------------------|
-| GET    | `/books`          | List all books       |
-| POST   | `books`           | Add a new book       |
-| GET    | `books/<book_id>` | Get an specific book |
-| PUT    | `books/<book_id>` | Update a book        |
-| DELETE | `books/<book_id>` | Delete a book        |
+| Method | Endpoint             | Description          |
+|--------|----------------------|----------------------|
+| GET    | `/books`             | List all books       |
+| POST   | `/books`             | Add a new book       |
+| GET    | `/books/<book_id>`   | Get book details     |
+| PUT    | `/books/<book_id>`   | Update a book        |
+| DELETE | `/books/<book_id>`   | Delete a book        |
 
 ### Example Request
 
