@@ -25,4 +25,23 @@ A RESTful API for managing books, built with Flask, Flask-RESTful, SQLAlchemy, a
 
 - [Docker](https://www.docker.com/get-started) installed
 
- ❗ **Important:** 
+ ❗ **Important:**  All endpoints require HTTP Basic Auth:
+
+- **Username**: `admin`
+- **Password**: `password123`
+
+### API Endpoints
+
+| Method | Endpoint        | Description
+|-------------------------------
+| GET       |                 |
+| POST       |                 |
+| GET      |                 |
+| PUT       |                 |
+| DELETE       |                 |
+
+### Example Request
+
+```sh
+curl -u admin:password123 http://localhost:5000
+```
