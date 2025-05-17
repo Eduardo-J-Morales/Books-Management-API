@@ -100,3 +100,7 @@ A RESTful API for managing books, built with Flask, Flask-RESTful, SQLAlchemy, a
     ```sh
     python app.py
     ```
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
